@@ -11,25 +11,16 @@ import SwiftUI
 @MainActor
 public final class Router {
     var path = [Route]()
+	
+	public init() {}
 
+	@discardableResult
     public func open<T: Sendable>(_ view: any View) async -> T? {
         await withCheckedContinuation({ continuation in
             let route = Route(
                 view: AnyView(view),
                 resume: { result in
                     continuation.resume(returning: result as? T)
-                }
-            )
-            path.append(route)
-        })
-    }
-
-    public func open(_ view: any View) async {
-        await withCheckedContinuation({ continuation in
-            let route = Route(
-                view: AnyView(view),
-                resume: { result in
-                    continuation.resume()
                 }
             )
             path.append(route)

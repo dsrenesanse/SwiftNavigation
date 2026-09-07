@@ -34,8 +34,9 @@ struct Screen1: View {
             }.sheet(isPresented: $sheet) {
                 InnerNavigation1()
             }
-        }.navigationTitle("Screen 1")
-            .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationTitle("Screen 1")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
